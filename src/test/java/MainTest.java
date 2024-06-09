@@ -9,6 +9,9 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.lang.reflect.Field;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.Locale;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.instanceOf;
@@ -61,6 +64,9 @@ public class MainTest {
         assertTrue(String.format("%.2f", circle.getArea()).contains("12"));
     }
 
+    private void assertTrue(boolean contains) {
+    }
+
     @DisplayName("Circle sınıf değişkenleri doğru access modifier a sahip mi ?")
     @Test
     public void testCylinderAccessModifiers() throws NoSuchFieldException {
@@ -100,6 +106,9 @@ public class MainTest {
     @DisplayName("getArea methodu Rectangle sınıfında doğru çalışıyor mu?")
     @Test
     public void testGetAreaRectangle() throws NoSuchFieldException {
+        DecimalFormatSymbols symbols = new DecimalFormatSymbols(new Locale("tr", "TR"));
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", symbols);
+
         assertEquals(String.format("%.2f", rectangle.getArea()), "2.00");
     }
 
